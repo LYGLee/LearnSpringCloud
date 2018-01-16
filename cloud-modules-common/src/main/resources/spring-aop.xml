@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- aop -->
+<aop:aspectj-autoproxy />
+<beans:bean id="controllerAop" class="xxx.common.aop.ControllerAOP" />
+
+<aop:config>
+<aop:aspect id="myAop" ref="controllerAop">
+    <aop:pointcut id="target"
+                  expression="execution(public xxx.common.beans.ResultBean *(..))" />
+    <aop:around method="handlerControllerMethod" pointcut-ref="target" />
+</aop:aspect>
+</aop:config>
